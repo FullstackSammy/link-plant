@@ -35,7 +35,7 @@ class Link(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='links') #related_name gör länkarna åtkomliga inom profilen, genom att typ skriva profile.links
     
     def __str__(self):
-        return self.text
+        return f"Link: {self.text} | Profile: {self.profile}"
 
 
 # Many to many - I detta fall betyder detta att många länkar kommer va associerade med många profiler.
