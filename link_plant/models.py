@@ -32,7 +32,7 @@ class Link(models.Model):
     # text, url, profile that it's connected to
     text = models.CharField(max_length=100)
     url = models.URLField()
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='links')
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='links') #related_name gör länkarna åtkomliga inom profilen, genom att typ skriva profile.links
 
 
 # Many to many - I detta fall betyder detta att många länkar kommer va associerade med många profiler.
