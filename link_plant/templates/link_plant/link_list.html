@@ -33,7 +33,7 @@
                         </svg>
                     </a>  {% endcomment %}
                 <td class="px-4 py-3 underline text-blue-600"><a href="{% url 'link-update' link.id %}">Edit</a></td>
-                {% comment %} <td class="px-4 py-3 underline text-red-600"><a href="{% url 'link-delete' link.id %}">Delete</a></td> {% endcomment %}
+                <td class="px-4 py-3 underline text-red-600"><a href="{% url 'link-delete' link.id %}">Delete</a></td>
             </tr>
         {% endfor %}
       </tbody>
