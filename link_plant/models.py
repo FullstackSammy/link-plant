@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.text import slugify
 
 # Each Class is a table in our db
 
@@ -27,13 +26,6 @@ class Profile(models.Model):
     # Overriding dunder-method
     def __str__(self):
         return self.name
-    
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            #förvandlar name till slug
-            self.slug = slugify(self.name)
-            
-        return super().save(*args, **kwargs)
     
 # Link model
 class Link(models.Model):
