@@ -1,7 +1,6 @@
 from django.urls import path
-from .views import index
+from .views import LinkListView
 
 urlpatterns = [
-    path('', index, name='home'),
-    
+    path('', LinkListView.as_view(), name='link-list'), 
 ]
