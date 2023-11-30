@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
@@ -29,3 +29,13 @@ class LinkUpdateView(UpdateView):
 class LinkDeleteView(DeleteView):
     model = Link
     success_url = reverse_lazy('link-list') # This here is where we send the user when they have successfully created a link. reverse_lazy takes in the url name as a parameter.
+    
+
+def profile_view(request, profile_slug):
+    profile = get_object_or_404(Profile, slug=profile_slug) # fetches Profile objects from DB by their slug
+    links = profile.links.all() # gets all the links for the specific profiles
+    context = {
+        'profile': profile,
+        'links': links,
+    }
+    return render(request, 'link_plant/profile.html', context)
