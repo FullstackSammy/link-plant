@@ -1,11 +1,17 @@
 from django.shortcuts import render, HttpResponse
-from django.views.generic import ListView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView
 
 from .models import Profile, Link
 
 # Create your views here.
 class LinkListView(ListView):
-    # What model we wanna grab info from
-    model = Link
-    # template called model_list.html -> link_list.html
+    model = Link # What model we wanna grab info from
     
+
+class LinkCreateView(CreateView):
+    model = Link # What model we wanna grab info from
+    fields = '__all__' # This creates the forms for us. in this case it will include all the fields
+    success_url = reverse_lazy('link-list') # This here is where we send the user when they have successfully created a link. reverse_lazy takes in the url name as a parameter. 
+    # This class creates a few things by default. the first thing is that it creates a template that takes the model name then _forms -> link_form.html
+    # It will also create a form context variable that we will have access to inside the above html-file.
